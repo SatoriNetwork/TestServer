@@ -11,8 +11,8 @@ app = Flask(__name__)
 api = Api(app)
 
 # Register the models with Swagger
-api.models['Proposal'] = proposal_model
-api.models['Vote'] = vote_model
+# api.models['Proposal'] = proposal_model
+# api.models['Vote'] = vote_model
 
 proposal_schema = ProposalSchema()
 vote_schema = VoteSchema()
