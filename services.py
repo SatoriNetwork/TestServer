@@ -1,5 +1,6 @@
-from models import db, ProposalModel, VoteModel
+from models import ProposalModel, VoteModel
 from schemas import ProposalSchema, VoteSchema
+from extensions import db
 
 def get_proposals():
     proposals = ProposalModel.query.all()
