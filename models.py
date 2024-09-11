@@ -28,22 +28,22 @@ class VoteModel(db.Model):
     __table_args__ = (db.UniqueConstraint('proposal_id', 'user_id', name='uq_proposal_user'),)
 
 # Define Swagger models
-proposal_model = {
-    'id': fields.String(required=True, description='Proposal ID'),
-    'title': fields.String(required=True, description='Title of the proposal'),
-    'description': fields.String(required=True, description='Description of the proposal'),
-    'proposal_date': fields.DateTime(required=True, description='Date of the proposal'),
-    'complete_date': fields.DateTime(description='Completion date of the proposal'),
-    'value': fields.Float(required=True, description='Value of the proposal'),
-    'image_url': fields.String(description='Image URL for the proposal'),
-    'created_at': fields.DateTime(description='Creation timestamp'),
-    'updated_at': fields.DateTime(description='Last updated timestamp'),
-}
+# proposal_model = {
+#     'id': fields.String(required=True, description='Proposal ID'),
+#     'title': fields.String(required=True, description='Title of the proposal'),
+#     'description': fields.String(required=True, description='Description of the proposal'),
+#     'proposal_date': fields.DateTime(required=True, description='Date of the proposal'),
+#     'complete_date': fields.DateTime(description='Completion date of the proposal'),
+#     'value': fields.Float(required=True, description='Value of the proposal'),
+#     'image_url': fields.String(description='Image URL for the proposal'),
+#     'created_at': fields.DateTime(description='Creation timestamp'),
+#     'updated_at': fields.DateTime(description='Last updated timestamp'),
+# }
 
-vote_model = {
-    'id': fields.String(required=True, description='Vote ID'),
-    'proposal_id': fields.String(required=True, description='Proposal ID'),
-    'user_id': fields.String(required=True, description='User ID'),
-    'vote': fields.Boolean(required=True, description='Vote value'),
-    'timestamp': fields.DateTime(description='Timestamp of the vote'),
-}
+# vote_model = {
+#     'id': fields.String(required=True, description='Vote ID'),
+#     'proposal_id': fields.String(required=True, description='Proposal ID'),
+#     'user_id': fields.String(required=True, description='User ID'),
+#     'vote': fields.Boolean(required=True, description='Vote value'),
+#     'timestamp': fields.DateTime(description='Timestamp of the vote'),
+# }
