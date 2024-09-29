@@ -2,7 +2,8 @@ from models import ProposalModel, VoteModel
 from schemas import ProposalSchema, VoteSchema
 from extensions import db
 
-def get_proposals():
+
+def getProposals():
     proposals = ProposalModel.query.all()
     result = []
     for proposal in proposals:
@@ -19,6 +20,8 @@ def get_proposals():
         }
         result.append(proposal_data)
     return result
+
+
 def submit_vote(proposal_id, user_id, vote):
     new_vote = VoteModel(
         proposal_id=proposal_id,

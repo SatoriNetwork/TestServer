@@ -1,16 +1,17 @@
 from flask_restx import Resource
 from flask import request
-from services import get_proposals, submit_vote
+from services import getProposals, submit_vote
 from schemas import ProposalSchema, VoteSchema
 from marshmallow import ValidationError
 from swagger_models import create_swagger_models
+
 
 def register_routes(api):
     swagger_models = create_swagger_models(api)
 
     @api.route('/test')
     class TestConnection(Resource):
-        @api.doc('test_connection',
+        @api.doc('testConnection',
                  description='Test the API connection',
                  responses={
                      200: 'API is working correctly',
@@ -30,10 +31,10 @@ def register_routes(api):
         @api.marshal_list_with(swagger_models['Proposal'])
         def get(self):
             """List all proposals"""
-            proposals = get_proposals()
+            proposals = getProposals()
             return ProposalSchema(many=True).dump(proposals)
 
-    @api.route('/proposal_votes')
+    @api.route('/proposal/votes')
     class VoteSubmission(Resource):
         @api.doc('submit_vote',
                  description='Submit a vote for a specific proposal.',
@@ -50,7 +51,8 @@ def register_routes(api):
             vote_schema = VoteSchema()
             try:
                 data = vote_schema.load(request.json)
-                success, message = submit_vote(data['proposal_id'], data['user_id'], data['vote'])
+                success, message = submit_vote(
+                    data['proposal_id'], data['user_id'], data['vote'])
                 if success:
                     return {"message": message}, 200
                 else:
